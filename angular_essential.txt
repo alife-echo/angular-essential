@@ -1,0 +1,73 @@
+# -- COMPONENTES 
+
+
+Propriedades principais de um componente :
+
+decorador --> @Component({})
+
+modelo HTML --> template
+
+selector css que definem o componente html --> selector
+
+uma classes typescript que faz o gerenciamento de estados e manipulção da entrada ou busca de dados feito pelo usuário --> export class 
+
+simplificador de criação de componente --> standalone 
+
+string ou array de string que contem estilos css --> styles
+
+
+
+exemplo:
+
+// todo-list-item.component.ts
+@Component({
+  standalone: true,
+  selector: 'todo-list-item',
+  template: `
+    <li>(TODO) Read Angular Essentials Guide</li>
+  `,
+  styles: `
+    li {
+      color: red;
+      font-weight: 300;
+    }
+  `,
+})
+export class TodoListItem {
+  /* Component behavior is defined in here */
+}
+
+
+
+
+# -- Separando HTML e CSS em arquivos separados
+
+
+templateUrl --> linkar um arquivo html
+
+styleUrl --> linkar um arquivo css
+
+
+// todo-list-item.component.ts
+@Component({
+  standalone: true,
+  selector: 'todo-list-item',
+  templateUrl: './todo-list-item.component.html',
+  styleUrl: './todo-list-item.component.css',
+})
+export class TodoListItem {
+  /* Component behavior is defined in here */
+}
+
+
+<!-- todo-list-item.component.html -->
+<li>(TODO) Read Angular Essentials Guide</li>
+
+
+// todo-list-item.component.css
+li {
+  color: red;
+  font-weight: 300;
+}
+
+
