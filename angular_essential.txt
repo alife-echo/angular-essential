@@ -71,3 +71,119 @@ li {
 }
 
 
+
+
+# -- Usando um componente
+
+
+1. Importe o componente para o arquivo
+2. Adicione-o ao 'imports' array do componente
+3. Use o seletor no componente no 'template'
+
+Exemplo:
+
+// todo-list.component.ts
+import {TodoListItem} from './todo-list-item.component.ts';
+@Component({
+  standalone: true,
+  imports: [TodoListItem],
+  template: `
+    <ul>
+      <todo-list-item></todo-list-item>
+    </ul>
+  `,
+})
+export class TodoList {}
+
+
+
+# -- Definindo um estado 
+
+
+1.taskTitle— Qual é o título da tarefa
+
+2.isComplete- Se a tarefa está concluída ou não
+
+
+// todo-list-item.component.ts
+@Component({ ... })
+export class TodoListItem {
+  taskTitle = '';
+  isComplete = false;
+}
+
+
+
+# -- Atualizando um estado
+
+
+@Component({ ... })
+export class TodoList {
+  taskTitle = ''; --> campos de classe
+  isComplete = false; --> campos de classe
+
+  completeTask() { // update
+    this.isComplete = true;
+  }
+
+  updateTitle(newTitle: string) { // set
+    this.taskTitle = newTitle;
+  }
+}
+
+
+# -- Rederização de dados dinâmicos
+
+@Component({
+  selector: 'todo-list-item',
+  template: `
+    <p>Title: {{ taskTitle }}</p>
+  `,
+})
+export class TodoListItem {
+  taskTitle = 'Read cup of coffee';
+}
+
+
+
+# -- Propriedades dinâmicas
+
+
+Quando você precisa definir dinamicamente o valor das propriedades DOM padrão em um elemento HTML, a propriedade é colocada entre colchetes para informar ao Angular que o valor declarado deve ser interpretado como uma instrução dinamica
+
+
+ex:
+
+@Component({
+  selector: 'sign-up-form',
+  template: `
+    <button type="submit" [disabled]="formIsInvalid">Submit</button>
+  `,
+})
+--> disabled vai ter seu valor definido com base no que for setado na class formIsInvalid do SignUpForm
+export class SignUpForm {
+  formIsInvalid = true;
+}
+
+
+
+# -- Atributos Dinâmicos
+
+Caso você queira vincular dinamicamente atributos HTML personalizados (por exemplo, aria-, data-, etc.), você pode querer agrupar os atributos personalizados com os mesmos colchetes.
+
+
+@Component({
+  standalone: true,
+  template: `
+    <button [attr.data-test-id]="testId">Primary CTA</button>
+  `,
+})
+export class AppBanner {
+  testId = 'main-cta';
+}
+
+
+
+
+
+
