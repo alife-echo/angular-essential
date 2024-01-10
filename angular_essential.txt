@@ -185,5 +185,70 @@ export class AppBanner {
 
 
 
+# -- Condicionais e loops
+
+Semelhante à declaração do JavaScript if, Angular usa @if blocos de fluxo de controle para ocultar e mostrar condicionalmente parte de um modelo e seu conteúdo.
+
+else Quando você precisar de um substituto, semelhante à cláusula do JavaScript , adicione um @else bloco para obter o mesmo efeito.
+
+import { Component } from "@angular/core";
+
+@Component({
+    standalone:true,
+    selector:'user-controls',
+    template:`
+        @if (isAdmin){
+            <button>Erase database</button>
+        }
+ 	@else {
+            <p>Você não esta autorizado</p>
+        }
+    `
+})
 
 
+export class UserControls {
+    isAdmin = true;
+}
+
+
+
+
+# -- Renderizando uma lista
+
+@for bloco
+
+Semelhante aos loops do JavaScript for...of, o Angular fornece o @forbloco para renderizar elementos repetidos.
+
+<!-- ingredient-list.component.html -->
+<ul>
+  @for (ingredient of ingredientList; track ingredient.name) {
+    <li>{{ ingredient.quantity }} - {{ ingredient.name }}</li>
+  }
+</ul>
+
+
+// ingredient-list.component.ts
+@Component({
+  standalone: true,
+  selector: 'ingredient-list',
+  templateUrl: './ingredient-list.component.html',
+})
+export class IngredientList {
+  ingredientList = [
+    {name: 'noodles', quantity: 1},
+    {name: 'miso broth', quantity: 1},
+    {name: 'egg', quantity: 2},
+  ];
+}
+
+
+
+
+# -- track propriedade
+
+Quando Angular renderiza uma lista de elementos com @for, esses itens podem ser alterados ou movidos posteriormente. O Angular precisa rastrear cada elemento por meio de qualquer reordenação, geralmente tratando uma propriedade do item como um identificador ou chave exclusivo.
+
+Isso garante que quaisquer atualizações na lista sejam refletidas corretamente na IU e rastreadas adequadamente no Angular, especialmente no caso de elementos ou animações com estado.
+
+Para conseguir isso, podemos fornecer uma chave exclusiva para Angular com a trackpalavra-chave.

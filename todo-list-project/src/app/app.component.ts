@@ -4,15 +4,20 @@ import { RouterOutlet } from '@angular/router';
 import { TodoList } from './todo-list.component';
 import { SignUpForm } from './button-form.component';
 import { AppBanner } from './app-banner.component';
+import { UserControls } from './user-controls.component';
+import { IngredientList } from './ingredient-list.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,TodoList,SignUpForm,AppBanner],
+  imports: [CommonModule, RouterOutlet,TodoList,SignUpForm,AppBanner,UserControls,IngredientList],
   template: `
           <ul>
               <todo-list> </todo-list>
               <sign-up-form> </sign-up-form>
               <app-banner> </app-banner>
+              <user-controls> </user-controls>
+              <ingredient-list> </ingredient-list>
           </ul>
   `,
   styleUrl: './app.component.css'
