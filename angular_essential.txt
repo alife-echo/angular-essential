@@ -214,6 +214,8 @@ export class UserControls {
 
 
 
+
+
 # -- Renderizando uma lista
 
 @for bloco
@@ -245,6 +247,8 @@ export class IngredientList {
 
 
 
+
+
 # -- track propriedade
 
 Quando Angular renderiza uma lista de elementos com @for, esses itens podem ser alterados ou movidos posteriormente. O Angular precisa rastrear cada elemento por meio de qualquer reordenação, geralmente tratando uma propriedade do item como um identificador ou chave exclusivo.
@@ -252,3 +256,84 @@ Quando Angular renderiza uma lista de elementos com @for, esses itens podem ser 
 Isso garante que quaisquer atualizações na lista sejam refletidas corretamente na IU e rastreadas adequadamente no Angular, especialmente no caso de elementos ou animações com estado.
 
 Para conseguir isso, podemos fornecer uma chave exclusiva para Angular com a trackpalavra-chave.
+
+
+
+
+
+
+# -- Manipulação de eventos
+
+Você pode adicionar um manipulador de eventos a um elemento:
+
+Adicionando um atributo com o nome do evento entre parênteses
+Especifique qual instrução JavaScript você deseja executar quando for disparada
+
+
+
+exemplo:
+
+@Component({
+    standalone:true,
+    selector:'text-transformer',
+    template:`
+         <p>{{announcement}}</p>
+         <button (click)="transformerText()">Abracadabra!</button>
+    `
+})
+
+export class TextTransfomer {
+    announcement = 'Hello again Angular!'
+    transformerText(){
+        this.announcement = this.announcement.toUpperCase()
+    }
+}
+
+
+
+
+
+# -- Serviços
+
+
+Serviços são pedaços de código reutilizáveis ​​que podem ser injetados
+
+Semelhante à definição de um componente, os serviços são compostos pelo seguinte
+
+Um decorador TypeScript que declara a classe como um serviço Angular via @Injectablee permite definir qual parte do aplicativo pode acessar o serviço por meio da providedInpropriedade (que normalmente é 'root') para permitir que um serviço seja acessado em qualquer lugar dentro do aplicativo.
+Uma classe TypeScript que define o código desejado que estará acessível quando o serviço for injetado
+
+
+
+import { Injectable } from "@angular/core";
+
+@Injectable({
+  providedIn:'root'
+})
+
+export class CalculatorService {
+  add(x:number,y:number) {
+     return x + y
+  }
+}
+
+
+
+
+# -- Como usar um serviço
+
+
+Quando quiser usar um serviço em um componente, você precisa:
+
+1.Importe o serviço
+
+2. Declare um campo de classe onde o serviço é injetado. Atribua o campo de classe ao resultado da chamada da função integrada inject que cria o serviço
+Esta é a aparência do Receipt componente:
+
+
+
+
+
+
+
+

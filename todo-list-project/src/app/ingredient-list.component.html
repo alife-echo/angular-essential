@@ -1,5 +1,6 @@
 <ul>
+    
    @for (ingredient of ingredientList; track ingredient.name){
-     <li>{{ingredient.quantity}} - {{ingredient.name}}</li>
+     <li>{{ingredient.quantity}} - {{ingredient.name}} <input [value]="ingredient.name" (input)="ingredient.name=getValue($event)"></li>
    }
 </ul>
