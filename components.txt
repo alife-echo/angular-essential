@@ -1,0 +1,37 @@
+
+# -- Components 
+
+
+-- Cada componente deve ter:
+
+  Uma classe TypeScript com comportamentos como manipulação de entrada do usuário e busca de dados de um servidor
+  Um modelo HTML que controla o que é renderizado no DOM
+  Um seletor CSS que define como o componente é usado em HTML
+  Um seletor CSS que define como o componente é usado em HTML
+
+
+-- Explicação anatomia componente
+
+2. Criando Instâncias de Componentes:
+Quando você usa Angular em seu aplicativo, cada vez que o Angular encontra um elemento HTML que corresponde a um componente que você definiu, ele cria uma instância desse componente. Em termos simples, imagine que você tem um componente de "Botão" - sempre que o Angular encontra <app-botao></app-botao> no HTML, ele cria uma instância desse componente.
+
+3. Elemento Host:
+Cada instância de componente tem um elemento HTML associado a ela, chamado de "elemento host". Esse elemento é onde o conteúdo do componente será renderizado. Se você tem um componente de "Caixa de Mensagens", o elemento host pode ser <div class="mensagem-container"></div>. O conteúdo do componente de "Caixa de Mensagens" será renderizado dentro deste elemento host.
+
+4. Modelo do Componente:
+O "modelo" de um componente é basicamente o conteúdo que esse componente exibirá. Pode incluir HTML, dados dinâmicos, etc. Então, quando você tem um componente de "Caixa de Mensagens" com um modelo que contém um título e um corpo, esse é o conteúdo que será renderizado dentro do elemento host.
+
+5. View do Componente:
+A "view" de um componente é o DOM renderizado correspondente ao modelo desse componente. Em outras palavras, é o que os usuários veem na interface do usuário quando o componente é exibido. A "view" é construída a partir do modelo do componente.
+
+6. Árvore de Componentes:
+Ao construir um aplicativo Angular, você está, na verdade, criando uma "árvore de componentes". Isso significa que você tem componentes dentro de componentes, formando uma estrutura hierárquica semelhante a uma árvore. O componente pai contém componentes filhos, que podem, por sua vez, conter mais componentes.
+
+Resumindo:
+Portanto, ao usar o Angular, você cria instâncias de componentes para representar diferentes partes do seu aplicativo. Cada componente tem seu próprio elemento host, onde seu conteúdo é renderizado. A combinação dos elementos hosts e seus conteúdos forma a visualização do seu aplicativo, e essa estrutura é organizada de forma hierárquica, como uma árvore de componentes.
+
+
+
+-- Componentes autônomos
+
+Um componente independente é um componente que define standalone: trueos metadados de seu componente. Componentes autônomos importam diretamente outros componentes, diretivas e pipes usados ​​em seus modelos:
